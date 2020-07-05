@@ -102,7 +102,7 @@
             </div>
       </div>
      
-    <button type="submit"[disabled]="!f.valid"  class="btn btn-primary">Submit</button>
+    <button type="submit"[disabled]="!f.valid" (click)="register(email.value,password.value)"  class="btn btn-primary">Register</button>
 
    
     

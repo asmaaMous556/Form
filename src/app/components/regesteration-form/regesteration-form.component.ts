@@ -4,6 +4,7 @@ import { user } from 'src/app/models/user';
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'regesteration-form',
@@ -11,9 +12,9 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./regesteration-form.component.css']
 })
 export class RegesterationFormComponent implements OnInit {
-  validForm:boolean
-  f:FormGroup;
-  constructor(private userService:UserService,private router: Router) { }
+  
+  constructor(private userService:UserService
+    ,private router: Router, private auth:AuthService) { }
 
   formSubmit(user:user){
     this.userService.submitUser(user);
@@ -21,9 +22,9 @@ export class RegesterationFormComponent implements OnInit {
     this.router.navigate(['/login']);
 
   }
-  // submitted():boolean{
-  //  if(this.f.valid) {return true;}
-  // }
+  register(email,password){
+ this.auth.signUp(email,password)
+  }
 
   ngOnInit(): void {
   }
